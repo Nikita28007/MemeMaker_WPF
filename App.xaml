@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:MemeMaker_WPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Slider">
+            <Setter Property="Minimum" Value="100"/>
+            <Setter Property="Maximum" Value="1000"/>
+            <Setter Property="Value" Value="500"/>
+        </Style>
+
+       
+        
     </Application.Resources>
 </Application>
