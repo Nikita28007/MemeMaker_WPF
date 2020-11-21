@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemeMaker_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="781" Width="826">
+        Title="MainWindow" Height="781" Width="826"
+       Icon="512.png" >
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-    <Grid>
+    <Grid >
         
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="520"></RowDefinition>
+            <RowDefinition Height="540"></RowDefinition>
 
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Height="200" VerticalAlignment="Top">
@@ -29,22 +30,22 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             
-            <TextBlock HorizontalAlignment="Left" Grid.Column="0" TextWrapping="Wrap" Margin="5,5,0,0" Text="Texto superior" VerticalAlignment="Top" Height="16" Width="100"/>
-            <TextBox x:Name="textoSupTextBox" HorizontalAlignment="Left" Grid.Column="1" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="620" Margin="10,5,0,0" />
+            <TextBlock  Text="Texto superior" />
+            <TextBox x:Name="textoSupTextBox"   />
 
-            <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Margin="5,5,0,0" Text="Texto superior" VerticalAlignment="Top" Height="16" Width="100"/>
-            <TextBox x:Name="textoInfTextBox" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="620" Margin="10,5,0,0" />
+             <TextBlock  Grid.Row="1" Text="Texto superior" />
+            <TextBox x:Name="textoInfTextBox"  Grid.Row="1" />
 
-            <TextBlock  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Margin="5,5,0,0" Text="Alto" VerticalAlignment="Top" Height="16" Width="100"/>
-            <Slider x:Name="altoSlider" Margin="10,5,0,0" HorizontalAlignment="Left" Grid.Column="1" Width="670" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBlock   Grid.Row="2" Text="Alto" />
+            <Slider x:Name="altoSlider"  Grid.Row="2" />
 
-            <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Margin="5,5,0,0" Text="Ancho" VerticalAlignment="Top" Height="16" Width="100"/>
-            <Slider  x:Name="anchoSlider" Minimum="100" HorizontalAlignment="Left" Grid.Column="1" Width="670" Grid.Row="3" Margin="10,5,0,0" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3"  Text="Ancho" />
+            <Slider  x:Name="anchoSlider"  Grid.Row="3"/>
 
-            <TextBlock HorizontalAlignment="Left" Grid.Column="0" Grid.Row="4" TextWrapping="Wrap" Margin="5,5,0,0" Text="Imagen" VerticalAlignment="Top" Height="16" Width="100"/>
-            <TextBox HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" Height="23"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="620" Margin="10,5,0,0" />
+            <TextBlock Grid.Row="4"  Text="Imagen" />
+            <TextBox x:Name="imagenSrcTextBox"  Grid.Row="4" />
 
-            <TextBlock  HorizontalAlignment="Left" Grid.Column="0" Grid.Row="5" TextWrapping="Wrap" Margin="5,5,0,0" Text="Borde" VerticalAlignment="Top" Height="16" Width="100"/>
+            <TextBlock  Grid.Row="5" Text="Borde"/>
             <CheckBox x:Name="bordeCheckBox" Margin="10,5,0,0" Grid.Column="1" Grid.Row="5" Content="CheckBox" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
         </Grid>
@@ -52,10 +53,9 @@
        
             <Border Visibility="{Binding ElementName=bordeCheckBox, Path=IsChecked}" Grid.Row="1" Height="{Binding ElementName=altoSlider, Path=Value}" Width="{Binding ElementName=anchoSlider, Path=Value}"  BorderBrush="Black" BorderThickness="3">
                 <Grid>
-                    <TextBlock TextWrapping="Wrap" FontFamily="Impact" Text="{Binding ElementName=textoInfTextBox,Path=Text}" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-                    <TextBlock TextWrapping="Wrap" FontFamily="Impact" Text="{Binding ElementName=textoSupTextBox,Path=Text}" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <Image Height="{Binding ElementName=altoSlider, Path=Value}" Width="{Binding ElementName=anchoSlider, Path=Value}" />
-
+                    <Image Height="{Binding ElementName=altoSlider, Path=Value}" Stretch="Fill" Width="{Binding ElementName=anchoSlider, Path=Value}" Source="{Binding ElementName=imagenSrcTextBox,Path=Text}"/>
+                    <TextBlock  Style="{StaticResource textoimg}" Text="{Binding ElementName=textoInfTextBox,Path=Text}" VerticalAlignment="Bottom" />
+                    <TextBlock  Style="{StaticResource textoimg}"  Text="{Binding ElementName=textoSupTextBox,Path=Text}" VerticalAlignment="Top"/>
                 </Grid>
 
 
